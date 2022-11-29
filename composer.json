@@ -1,0 +1,36 @@
+{
+    "name": "smashed-egg/laravel-console-enhancements",
+    "description": "Provides enhancements to commands in Laravel",
+    "keywords": ["php", "laravel", "console"],
+    "type": "library",
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/smashed-egg/laravel-console-enhancements/issues",
+        "source": "https://github.com/smashed-egg/laravel-console-enhancements"
+    },
+    "require": {
+        "php": "^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^7.6",
+        "laravel/framework": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SmashedEgg\\LaravelConsoleEnhancements\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SmashedEgg\\LaravelConsoleEnhancements\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tom Ellis"
+        }
+    ],
+    "config": {
+        "bin-dir": "bin"
+    }
+}
