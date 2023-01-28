@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/smashed-egg/.github/05d922c99f1a3bddea88339064534566b941eca9/profile/main.jpg" width="300">
+</p>
+
 # Laravel Console
 
 This package allows you to enhance your Console Commands by making it easier to add aliases and use interactive functionality.
@@ -22,7 +26,7 @@ composer require smashed-egg/laravel-console
 
 First you need to update your command, so it now extends:
 
-`SmashedEgg\LaravelConsole\Console\Command`
+`SmashedEgg\LaravelConsole\Command`
 
 instead of
 
@@ -37,7 +41,7 @@ So your class might look like:
 
 namespace App\Console;
 
-use SmashedEgg\LaravelConsole\Console\Command;
+use SmashedEgg\LaravelConsole\Command;
 
 class HelloCommand extends Command
 {
@@ -65,7 +69,7 @@ Using the console command above we can easily add an alias by adding the $alias 
 
 namespace App\Console;
 
-use SmashedEgg\LaravelConsole\Console\Command;
+use SmashedEgg\LaravelConsole\Command;
 
 class HelloCommand extends Command
 {
@@ -100,7 +104,7 @@ You can also specify a list of multiple aliases:
 
 namespace App\Console;
 
-use SmashedEgg\LaravelConsole\Console\Command;
+use SmashedEgg\LaravelConsole\Command;
 
 class HelloCommand extends Command
 {
@@ -126,3 +130,6 @@ php artisan hello Tom
 php artisan h Tom
 php artisan he Tom
 ```
+
+### Interactive Console Commands
+

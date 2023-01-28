@@ -1,9 +1,9 @@
 <?php
 
-namespace SmashedEgg\LaravelConsole\Console;
+namespace SmashedEgg\LaravelConsole;
 
-use Illuminate\Support\Arr;
 use Illuminate\Console\Command as LaravelCommand;
+use Illuminate\Support\Arr;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 

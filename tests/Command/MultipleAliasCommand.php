@@ -2,7 +2,7 @@
 
 namespace SmashedEgg\LaravelConsole\Tests\Command;
 
-use SmashedEgg\LaravelConsole\Console\Command;
+use SmashedEgg\LaravelConsole\Command;
 
 class MultipleAliasCommand extends Command
 {
