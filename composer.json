@@ -1,12 +1,12 @@
 {
-    "name": "smashed-egg/laravel-console-enhancements",
+    "name": "smashed-egg/laravel-console",
     "description": "Provides enhancements to commands in Laravel",
     "keywords": ["php", "laravel", "console"],
     "type": "library",
     "license": "MIT",
     "support": {
-        "issues": "https://github.com/smashed-egg/laravel-console-enhancements/issues",
-        "source": "https://github.com/smashed-egg/laravel-console-enhancements"
+        "issues": "https://github.com/smashed-egg/laravel-console/issues",
+        "source": "https://github.com/smashed-egg/laravel-console"
     },
     "require": {
         "php": "^8.0.2"
