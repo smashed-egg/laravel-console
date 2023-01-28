@@ -1,6 +1,6 @@
 {
     "name": "smashed-egg/laravel-console",
-    "description": "Provides enhancements to commands in Laravel",
+    "description": "This package allows you to enhance your Console Commands by making it easier to add aliases and use interactive functionality.",
     "keywords": ["php", "laravel", "console"],
     "type": "library",
     "license": "MIT",
