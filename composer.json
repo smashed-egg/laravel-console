@@ -9,20 +9,20 @@
         "source": "https://github.com/smashed-egg/laravel-console-enhancements"
     },
     "require": {
-        "php": "^8.0"
+        "php": "^8.0.2"
     },
     "require-dev": {
         "orchestra/testbench": "^7.6",
-        "laravel/framework": "^9.0"
+        "laravel/framework": "^9.21"
     },
     "autoload": {
         "psr-4": {
-            "SmashedEgg\\LaravelConsoleEnhancements\\": "src/"
+            "SmashedEgg\\LaravelConsole\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "SmashedEgg\\LaravelConsoleEnhancements\\Tests\\": "tests/"
+            "SmashedEgg\\LaravelConsole\\Tests\\": "tests/"
         }
     },
     "authors": [
@@ -32,5 +32,10 @@
     ],
     "config": {
         "bin-dir": "bin"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
     }
 }

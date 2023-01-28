@@ -1,13 +1,13 @@
 <?php
 
-namespace SmashedEgg\LaravelConsoleEnhancements\Command;
+namespace SmashedEgg\LaravelConsole\Console;
 
 use Illuminate\Support\Arr;
-use Illuminate\Console\Command;
+use Illuminate\Console\Command as LaravelCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-abstract class AbstractCommand extends Command
+class Command extends LaravelCommand
 {
     /**
      * The alias (or aliases) of the command

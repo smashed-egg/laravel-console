@@ -1,11 +1,11 @@
 <?php
 
-namespace SmashedEgg\LaravelConsoleEnhancements\Tests;
+namespace SmashedEgg\LaravelConsole\Tests;
 
 use Illuminate\Support\ServiceProvider;
-use SmashedEgg\LaravelConsoleEnhancements\Tests\Command\InteractiveCommand;
-use SmashedEgg\LaravelConsoleEnhancements\Tests\Command\MultipleAliasCommand;
-use SmashedEgg\LaravelConsoleEnhancements\Tests\Command\TestCommand;
+use SmashedEgg\LaravelConsole\Tests\Command\InteractiveCommand;
+use SmashedEgg\LaravelConsole\Tests\Command\MultipleAliasCommand;
+use SmashedEgg\LaravelConsole\Tests\Command\TestCommand;
 
 class TestServiceProvider extends ServiceProvider
 {

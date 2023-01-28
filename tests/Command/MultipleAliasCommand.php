@@ -1,10 +1,10 @@
 <?php
 
-namespace SmashedEgg\LaravelConsoleEnhancements\Tests\Command;
+namespace SmashedEgg\LaravelConsole\Tests\Command;
 
-use SmashedEgg\LaravelConsoleEnhancements\Command\AbstractCommand;
+use SmashedEgg\LaravelConsole\Console\Command;
 
-class MultipleAliasCommand extends AbstractCommand
+class MultipleAliasCommand extends Command
 {
     protected $signature = 'multiple-alias:command {name : An argument}';
 

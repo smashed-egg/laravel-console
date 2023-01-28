@@ -1,10 +1,10 @@
 <?php
 
-namespace SmashedEgg\LaravelConsoleEnhancements\Tests\Console;
+namespace SmashedEgg\LaravelConsole\Tests\Console;
 
 use Orchestra\Testbench\Console\Kernel;
-use SmashedEgg\LaravelConsoleEnhancements\Tests\TestCase;
-use SmashedEgg\LaravelConsoleEnhancements\Tests\TestServiceProvider;
+use SmashedEgg\LaravelConsole\Tests\TestCase;
+use SmashedEgg\LaravelConsole\Tests\TestServiceProvider;
 
 class CommandTest extends TestCase
 {

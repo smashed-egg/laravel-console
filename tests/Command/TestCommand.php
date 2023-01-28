@@ -1,10 +1,10 @@
 <?php
 
-namespace SmashedEgg\LaravelConsoleEnhancements\Tests\Command;
+namespace SmashedEgg\LaravelConsole\Tests\Command;
 
-use SmashedEgg\LaravelConsoleEnhancements\Command\AbstractCommand;
+use SmashedEgg\LaravelConsole\Console\Command;
 
-class TestCommand extends AbstractCommand
+class TestCommand extends Command
 {
     protected $signature = 'my:command {name : An argument}';
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace SmashedEgg\LaravelConsoleEnhancements\Tests;
+namespace SmashedEgg\LaravelConsole\Tests;
 
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
