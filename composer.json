@@ -9,11 +9,14 @@
         "source": "https://github.com/smashed-egg/laravel-console"
     },
     "require": {
-        "php": "^8.0.2"
+        "php": "^8.0.2",
+        "illuminate/console": "^9.21",
+        "illuminate/contracts": "^9.21",
+        "illuminate/support": "^9.21"
     },
     "require-dev": {
         "orchestra/testbench": "^7.6",
-        "laravel/framework": "^9.21"
+        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "psr-4": {
