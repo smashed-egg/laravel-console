@@ -205,5 +205,15 @@ php artisan hello
 
 which will prompt for the additional input.
 
+```shell
+vagrant@homestead:/var/www/vhosts/laravel9$ php artisan hello
+
+ Name ?:
+ > Tom
+
+Hello Tom
+vagrant@homestead:/var/www/vhosts/laravel9$
+```
+
 
 
