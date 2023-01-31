@@ -40,4 +40,4 @@ jobs:
           composer require "illuminate/contracts=^${{ matrix.laravel }}" --no-update
           composer update --prefer-dist --no-interaction --no-progress
       - name: Execute tests
-        run: vendor/bin/phpunit --verbose
+        run: bin/phpunit --verbose
