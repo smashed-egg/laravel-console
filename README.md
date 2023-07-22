@@ -19,7 +19,7 @@ The purpose of this package is to make its usage more Laravel like.
 
 To install this package please run:
 
-```
+```shell
 composer require smashed-egg/laravel-console
 ```
 ## Usage
@@ -36,7 +36,7 @@ We extend this is our class, giving you the same Laravel functionality.
 
 So your class might look like:
 
-```
+```php
 <?php
 
 namespace App\Console;
@@ -64,7 +64,7 @@ This can make local development quicker if you have to type less.
 
 Using the console command above we can easily add an alias by adding the $alias property.
 
-```
+```php
 <?php
 
 namespace App\Console;
@@ -99,7 +99,7 @@ php artisan h Tom
 
 You can also specify a list of multiple aliases:
 
-```
+```php
 <?php
 
 namespace App\Console;
@@ -139,7 +139,7 @@ Using the same hello command example, lets make it interactive! For simplicity w
 
 First we need to add a method `handleInteract`.
 
-```
+```php
 <?php
 
 namespace App\Console;
@@ -165,7 +165,7 @@ class HelloCommand extends Command
 
 Next we need to update this method to ask for the arguments not provided.
 
-```
+```php
 <?php
 
 namespace App\Console;
