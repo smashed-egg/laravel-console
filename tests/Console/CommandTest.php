@@ -2,13 +2,19 @@
 
 namespace SmashedEgg\LaravelConsole\Tests\Console;
 
-use Orchestra\Testbench\Console\Kernel;
+use Illuminate\Console\OutputStyle;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
+use SmashedEgg\LaravelConsole\Command;
+use SmashedEgg\LaravelConsole\Concerns\AskAndValidate;
 use SmashedEgg\LaravelConsole\Tests\TestCase;
 use SmashedEgg\LaravelConsole\Tests\TestServiceProvider;
+use Mockery as m;
+use Illuminate\Contracts\Validation\Validator as ValidatorContract;
 
 class CommandTest extends TestCase
 {
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
             TestServiceProvider::class,
@@ -63,8 +69,82 @@ class CommandTest extends TestCase
         ;
     }
 
-    public function getKernel(): Kernel
+    public function testQuestionCommandRunsUntilValidationPasses()
     {
-        return $this->app->make(\Illuminate\Contracts\Console\Kernel::class);
+        $this
+            ->artisan('question:command')
+            ->expectsQuestion('Name ?', '')
+            ->expectsOutputToContain('Invalid input:')
+            ->expectsOutputToContain('Input is required')
+            ->expectsQuestion('Name ?', 'Tom')
+            ->expectsOutputToContain('Hello Tom')
+            ->assertExitCode(0)
+        ;
+    }
+
+    public function testAskWithValidateAlternative()
+    {
+        // This test was written as part of a PR for a feature in Laravel 10.x
+        // so thought id keep and reuse
+        $output = m::mock(OutputStyle::class);
+
+        $output->shouldReceive('ask')->twice()->with('Name ?', null)->andReturns('Tommy tommy tom tom tom tom', 'Tom');
+
+        $output->shouldReceive('writeln')->once()->withArgs(function (...$args) {
+            return $args[0] === '<error>Invalid input:</error>';
+        });
+
+        $output->shouldReceive('writeln')->once()->withArgs(function (...$args) {
+            return $args[0] === '<error>input must be less than 25 characters</error>';
+        });
+
+        $validationMessages = [
+            'input.required' => 'input is required',
+            'input.max' => 'input must be less than 25 characters',
+        ];
+
+        $validator1 = m::mock(ValidatorContract::class);
+        $validator2 = m::mock(ValidatorContract::class);
+
+        $validationException = m::mock(ValidationException::class);
+
+        $validationException
+            ->shouldReceive('errors')
+            ->once()
+            ->andReturn([
+                'input' => [
+                    'input must be less than 25 characters',
+                ],
+            ])
+        ;
+
+        $validator1->shouldReceive('validate')
+            ->once()
+            ->andThrow($validationException)
+        ;
+
+        $validator2->shouldReceive('validate')
+            ->once()
+            ->andReturn([
+                'input' => 'Tom'
+            ])
+        ;
+
+        Validator::shouldReceive('make')
+            ->twice()
+            ->andReturns($validator1, $validator2)
+        ;
+
+        $command = new class extends Command {
+            use AskAndValidate;
+        };
+
+        $command->setOutput($output);
+
+        $command->askAndValidate(
+            question: 'Name ?',
+            rules: ['required', 'max:25'],
+            messages: $validationMessages
+        );
     }
 }
