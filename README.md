@@ -20,7 +20,8 @@ The purpose of this package is to make its usage more Laravel like.
 
 - [Requirements](#requirements)
 - [Installation](#installation)
-- [Usage](#usage)
+- [Base Class Usage](#usage)
+- [Traits](docs/traits.md)
 
 ---
 
@@ -43,7 +44,9 @@ composer require smashed-egg/laravel-console
 
 ---
 
-## Usage
+### Base class Usage
+
+This package provides an alternative base class you can extend.
 
 First you need to update your command, so it now extends:
 
