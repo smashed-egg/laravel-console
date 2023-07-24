@@ -14,18 +14,35 @@ You can still use this functionality in your current console commands, as Symfon
 
 The purpose of this package is to make its usage more Laravel like. 
 
-## Requirements
+---
+
+## Table of contents
+
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+
+---
+
+### Requirements
 
 * PHP 8.0+
 * Laravel 9.21+
 
-## Installation
+---
+
+### Installation
 
 To install this package please run:
+
+---
 
 ```shell
 composer require smashed-egg/laravel-console
 ```
+
+---
+
 ## Usage
 
 First you need to update your command, so it now extends:
@@ -60,6 +77,8 @@ class HelloCommand extends Command
 ```
 
 Now we can enhance the command!
+
+---
 
 ### Console Command Aliases
 
@@ -135,11 +154,13 @@ php artisan h Tom
 php artisan he Tom
 ```
 
+---
+
 ### Interactive Console Commands
 
 Did you know the arguments you specify in the command signature can also be provided interactively? I know right!
 
-Using the same hello command example, lets make it interactive! For simplicity we'll remove the alias, so it's easier to read.
+Using the same hello command example, lets make it interactive! For simplicity, we'll remove the alias, so it's easier to read.
 
 First we need to add a method `handleInteract`.
 
@@ -219,70 +240,5 @@ Hello Tom
 vagrant@homestead:/var/www/vhosts/laravel9$
 ```
 
-## Traits (Concerns)
 
-This package provides (or will) various Traits that can be used to drop in extra functionality.
-
-Below are the available traits.
-
-- [AskAndValidate](#ask-and-validate) - Provides the ability to validate input from a question repetitively until validate passes.
-
-
-### Ask and Validate
-
-Adding this trait provides a new method `askAndValidate`.
-
-When running commands that require a lot of input from the user, if you get partway through and the input is incorrect in some way, 
-you may have to run the command again (depending on how the command is written to handle bad input).
-
-With this trait you ask for input and validate in a loop until the value is correct. 
-The resulting code makes commands easy to read by combining the input and checking logic.
-
-Simply add the trait `SmashedEgg\LaravelConsole\Concerns\AskAndValidate` to your existing commands. 
-You don't have to extend `SmashedEgg\LaravelConsole\Command` to use this feature.
-
-Example code below:
-```php
-<?php
-
-namespace App\Console\Commands;
-
-use Illuminate\Console\Command;
-use SmashedEgg\LaravelConsole\Concerns\AskAndValidate;
-
-class AgeCommand extends Command
-{
-    use AskAndValidate;
-
-    protected $signature = 'ask-age';
-
-    public function handle()
-    {
-        $age = $this->askAndValidate(question: 'Age ?', rules: ['integer'], messages: ['input.integer' => 'Input must be a number']);
-
-        $this->info('You are ' . $age);
-
-        return 0;
-    }
-}
-```
-
-The user will be prompted in a loop until the age is entered correctly.
-
-```shell
-vagrant@homestead:/var/www/vhosts/laravel9$ php artisan ask-age
-
- Age ?:
- > not an age
-
-Invalid input:
-Input must be a number
-
- Age ?:
- > 36
- 
- You are 36
-
-vagrant@homestead:/var/www/vhosts/laravel9$
-```
 
