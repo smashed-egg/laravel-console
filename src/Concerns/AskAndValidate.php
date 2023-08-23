@@ -32,6 +32,27 @@ trait AskAndValidate
     }
 
     /**
+     * Prompt the user for input with completion until validation passes.
+     *
+     * @param string $question
+     * @param array|callable $choices
+     * @param null $default
+     * @param array $rules
+     * @param array $messages
+     * @return mixed
+     */
+    public function askWithCompletionAndValidate($question, $choices, $default = null, array $rules = [], array $messages = []): mixed
+    {
+        $value = $this->askWithCompletion($question, $choices, $default);
+
+        while ( ! $this->validateInput($value, $rules, $messages)) {
+            $value = $this->askWithCompletion($question, $choices, $default);
+        }
+
+        return $value;
+    }
+
+    /**
      * Validate input based on given rules. Any errors will be output to the user.
      *
      * @param $value

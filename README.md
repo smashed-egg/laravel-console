@@ -3,6 +3,9 @@
 </p>
 
 # Laravel Console
+[![Latest Stable Version](https://poser.pugx.org/smashed-egg/laravel-console/v/stable)](https://github.com/smashed-egg/laravel-console/releases)
+[![Downloads this Month](https://img.shields.io/packagist/dm/smashed-egg/laravel-console.svg)](https://packagist.org/packages/smashed-egg/laravel-console)
+
 
 This package allows you to enhance your Console Commands by making it easier to:
 

@@ -147,4 +147,75 @@ class CommandTest extends TestCase
             messages: $validationMessages
         );
     }
+
+    public function testAskWithCompletionAndValidate()
+    {
+        $output = m::mock(OutputStyle::class);
+
+        $output->shouldReceive('askQuestion')->twice()->with('Whats your favourite flavour?', null)->andReturns('cheese', 'chocolate');
+
+        $output->shouldReceive('writeln')->once()->withArgs(function (...$args) {
+            return $args[0] === '<error>Invalid input:</error>';
+        });
+
+        $output->shouldReceive('writeln')->once()->withArgs(function (...$args) {
+            return $args[0] === '<error>the selected input is invalid</error>';
+        });
+
+        $validationMessages = [
+            'input.required' => 'input is required',
+            'input.in' => 'the selected input is invalid',
+        ];
+
+        $validator1 = m::mock(ValidatorContract::class);
+        $validator2 = m::mock(ValidatorContract::class);
+
+        $validationException = m::mock(ValidationException::class);
+
+        $validationException
+            ->shouldReceive('errors')
+            ->once()
+            ->andReturn([
+                'input' => [
+                    'the selected input is invalid',
+                ],
+            ])
+        ;
+
+        $validator1->shouldReceive('validate')
+            ->once()
+            ->andThrow($validationException)
+        ;
+
+        $validator2->shouldReceive('validate')
+            ->once()
+            ->andReturn([
+                'input' => 'Tom'
+            ])
+        ;
+
+        Validator::shouldReceive('make')
+            ->twice()
+            ->andReturns($validator1, $validator2)
+        ;
+
+        $command = new class extends Command {
+            use AskAndValidate;
+        };
+
+        $command->setOutput($output);
+
+        $choices = [
+            'chocolate',
+            'vanilla',
+            'strawberry',
+        ];
+
+        $command->askWithCompletionAndValidate(
+            question: 'Name ?',
+            choices: $choices,
+            rules: ['required', 'max:25'],
+            messages: $validationMessages
+        );
+    }
 }
