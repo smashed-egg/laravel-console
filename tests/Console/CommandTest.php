@@ -152,7 +152,6 @@ class CommandTest extends TestCase
     {
         $output = m::mock(OutputStyle::class);
 
-        //$output->shouldReceive('askQuestion')->twice()->with('Whats your favourite flavour?', null)->andReturns('cheese', 'chocolate');
         $output->shouldReceive('askQuestion')->twice()->with(m::any())->andReturns('cheese', 'chocolate');
 
         $output->shouldReceive('writeln')->once()->withArgs(function (...$args) {
