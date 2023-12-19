@@ -1,8 +1,12 @@
 # Release Notes
 
+v1.3.0
+
+- Added new method `secretAndValidate` to `AskAndValidate` trait.
+
 v1.2.0
 
-- Added trait for AskAndValidate
+- Added trait for AskAndValidate.
 
 v1.1.0
 
@@ -11,7 +15,6 @@ v1.1.0
 v1.0.1
 
 - Fix dependencies to require is correct.
-
 
 v1.0.0
 

@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use SmashedEgg\LaravelConsole\Tests\Command\InteractiveCommand;
 use SmashedEgg\LaravelConsole\Tests\Command\MultipleAliasCommand;
 use SmashedEgg\LaravelConsole\Tests\Command\QuestionCommand;
+use SmashedEgg\LaravelConsole\Tests\Command\SecretCommand;
 use SmashedEgg\LaravelConsole\Tests\Command\TestCommand;
 
 class TestServiceProvider extends ServiceProvider
@@ -17,6 +18,7 @@ class TestServiceProvider extends ServiceProvider
             MultipleAliasCommand::class,
             InteractiveCommand::class,
             QuestionCommand::class,
+            SecretCommand::class,
         ]);
     }
 }

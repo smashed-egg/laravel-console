@@ -8,7 +8,10 @@ Below are the available traits.
 
 ## Ask and Validate
 
-Adding this trait provides a new method `askAndValidate`.
+Adding this trait provides the following methods:
+- `askAndValidate` - Ask a question and validate the input in a loop
+- `askWithCompletionAndValidate` - Ask a question with completion and validate the input in a loop
+- `secretAndValidate` - Ask for secret input and validate the input in a loop
 
 With this trait you ask for input and validate in a loop until the value is correct.
 The resulting code makes commands easy to read by combining the input and checking logic.

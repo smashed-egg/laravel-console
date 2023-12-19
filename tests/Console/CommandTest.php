@@ -218,4 +218,17 @@ class CommandTest extends TestCase
             messages: $validationMessages
         );
     }
+
+    public function testSecretCommandRunsUntilValidationPasses()
+    {
+        $this
+            ->artisan('secret:command')
+            ->expectsQuestion('Password ?', '')
+            ->expectsOutputToContain('Invalid input:')
+            ->expectsOutputToContain('Input is required')
+            ->expectsQuestion('Password ?', 'Pa55w0rd')
+            ->expectsOutputToContain('Pa55w0rd')
+            ->assertExitCode(0)
+        ;
+    }
 }

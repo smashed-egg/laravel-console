@@ -53,6 +53,25 @@ trait AskAndValidate
     }
 
     /**
+     * Prompt the user for secret input until validation passes.
+     *
+     * @param $question
+     * @param array $rules
+     * @param array $messages
+     * @return mixed
+     */
+    public function secretAndValidate($question, array $rules = [], array $messages = []): mixed
+    {
+        $value = $this->secret($question);
+
+        while ( ! $this->validateInput($value, $rules, $messages)) {
+            $value = $this->secret($question);
+        }
+
+        return $value;
+    }
+
+    /**
      * Validate input based on given rules. Any errors will be output to the user.
      *
      * @param $value
