@@ -1,5 +1,13 @@
 # Release Notes
 
+v1.5.0
+
+- Add Laravel 12 support.
+
+v1.4.0
+
+- Add Laravel 11 support.
+
 v1.3.0
 
 - Added new method `secretAndValidate` to `AskAndValidate` trait.
