@@ -1,5 +1,9 @@
 # Release Notes
 
+v1.6.0
+
+- Add PHP 8.5 support.
+
 v1.5.0
 
 - Add Laravel 12 support.
